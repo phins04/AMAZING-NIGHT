@@ -1,4 +1,14 @@
+Merci pour la précision ! Je comprends mieux. Je vais corriger ça :
 
+* **Titre et header** : Le thème sera bien "Africa Red Carpet"
+* Le slogan "Dans la beauté et la grandeur" sera placé ailleurs, par exemple sous le titre ou dans la présentation.
+* Je vais aussi améliorer les animations, intégrer des images en galerie plus belles, et ajouter un vrai modal d’achat avec choix Wave ou Orange Money par téléphone.
+
+Je te fais une version améliorée complète avec ces corrections, animations et une meilleure ergonomie :
+
+---
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,11 +31,12 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      overflow-x: hidden;
     }
     header, section {
       padding: 40px 20px;
-      animation: fadeInUp 1s ease forwards;
       opacity: 0;
+      animation: fadeInUp 1s ease forwards;
     }
     header {
       background: url('https://i.imgur.com/fxKx2HB.jpg') no-repeat center center/cover;
@@ -33,12 +44,13 @@
       text-align: center;
       padding: 120px 20px 80px;
       position: relative;
+      animation-delay: 0.2s;
     }
     header::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       z-index: 0;
     }
     header > * {
@@ -48,11 +60,20 @@
     header h1 {
       font-size: 3em;
       margin-bottom: 15px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+      letter-spacing: 0.05em;
     }
-    header p {
-      font-size: 1.3em;
-      margin-bottom: 10px;
+    header p.slogan {
+      font-size: 1.4em;
+      margin-bottom: 30px;
+      font-style: italic;
+      color: #ffdbdb;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+    }
+    header p.date {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      font-weight: 600;
       text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
     }
     .container {
@@ -63,6 +84,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       padding: 30px 40px;
       margin-bottom: 50px;
+      animation-delay: 0.4s;
     }
     .section-title {
       font-size: 2.5em;
@@ -70,6 +92,7 @@
       text-align: center;
       color: #d91438;
       font-weight: 700;
+      letter-spacing: 0.05em;
     }
     ul {
       list-style: inside disc;
@@ -92,21 +115,28 @@
       font-size: 1.1em;
       transition: background-color 0.3s ease;
       text-align: center;
+      cursor: pointer;
     }
-    .button:hover {
+    .button:hover, .button:focus {
       background-color: #a40f28;
+      outline: none;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 20px;
+      animation-delay: 0.6s;
     }
     .gallery img {
       width: 100%;
-      max-width: 100%;
       border-radius: 12px;
-      margin: 15px 0;
       box-shadow: 0 3px 12px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-    .gallery img:hover {
+    .gallery img:hover, .gallery img:focus {
       transform: scale(1.05);
+      outline: none;
     }
     .contact {
       background-color: #222;
@@ -114,6 +144,7 @@
       padding: 40px 20px;
       border-radius: 12px 12px 0 0;
       text-align: center;
+      animation-delay: 0.8s;
     }
     .contact a {
       color: #d91438;
@@ -127,7 +158,84 @@
       color: #d91438;
       font-weight: 700;
       letter-spacing: 0.05em;
+      animation-delay: 1s;
     }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 9999;
+    }
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 10px;
+      padding: 30px 40px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      animation: slideDown 0.4s ease forwards;
+    }
+    .modal-content h3 {
+      margin-bottom: 20px;
+      color: #d91438;
+      font-weight: 700;
+      font-size: 1.8em;
+    }
+    .modal-content p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .modal-content .payment-option {
+      background: #d91438;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      margin: 10px 0;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.1em;
+    }
+    .modal-content .payment-option:hover, .modal-content .payment-option:focus {
+      background-color: #a40f28;
+      outline: none;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px; right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.5em;
+      color: #999;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    .modal-close:hover, .modal-close:focus {
+      color: #d91438;
+      outline: none;
+    }
+
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -138,11 +246,25 @@
         transform: translateY(0);
       }
     }
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 2em;
       }
-      header p {
+      header p.slogan {
+        font-size: 1.1em;
+      }
+      header p.date {
         font-size: 1em;
       }
       .container {
@@ -156,16 +278,16 @@
 </head>
 <body>
   <header>
-    <h1>🌟 Amazing Night – Africa Red Carpet</h1>
-    <p>Vendredi 25 juillet 2025 – 18h00 à 00h00 | KS Royal</p>
-    <p>Thème : Dans la beauté et la grandeur</p>
+    <h1>Amazing Night</h1>
+    <p class="slogan">Africa Red Carpet</p>
+    <p class="date">Vendredi 25 juillet 2025 – 18h00 à 00h00 | KS Royal</p>
     <div class="countdown" id="countdown" aria-live="polite" aria-atomic="true"></div>
   </header>
 
   <section>
     <div class="container" role="region" aria-labelledby="presentation-title">
       <h2 class="section-title" id="presentation-title">🏆 Présentation</h2>
-      <p>Le Gala « Amazing Night » est l'événement chic de l’année à ne pas manquer. Préparez-vous pour une soirée mémorable dans l’élégance et la culture africaine.</p>
+      <p>Le Gala « Amazing Night » est l'événement chic de l’année à ne pas manquer. Préparez-vous pour une soirée mémorable dans l’élégance et la culture africaine, dans la beauté et la grandeur.</p>
     </div>
   </section>
 
@@ -185,8 +307,8 @@
     <div class="container" role="region" aria-labelledby="billetterie-title">
       <h2 class="section-title" id="billetterie-title">🎟️ Billetterie</h2>
       <p>Prix du ticket : <strong>20 000 FCFA</strong></p>
-      <p>Réservez par Orange / Wave au : <a href="tel:+2250700807746" style="color:#d91438; font-weight: 700;">07 00 80 77 46</a></p>
-      <a href="#" class="button" aria-label="Acheter mon ticket pour Amazing Night">Acheter mon ticket</a>
+      <p>Réservez facilement par téléphone via Orange Money ou Wave au : <a href="tel:+2250700807746" style="color:#d91438; font-weight: 700;">07 00 80 77 46</a></p>
+      <button class="button" id="buyTicketBtn" aria-label="Acheter mon ticket pour Amazing Night">Acheter mon ticket</button>
     </div>
   </section>
 
@@ -205,39 +327,5 @@
     <div class="container">
       <h2 class="section-title" id="gallery-title">📸 Galerie</h2>
       <img src="https://i.imgur.com/V2vZkXI.jpeg" alt="Teaser Amazing Night" loading="lazy" />
-      <img src="https://i.imgur.com/GKD7CyA.jpeg" alt="Ambiance Amazing Night" loading="lazy" />
-    </div>
-  </section>
-
-  <section class="contact" role="region" aria-labelledby="contact-title">
-    <div class="container">
-      <h2 class="section-title" id="contact-title">📞 Contact</h2>
-      <p>📱 <a href="tel:+2250700807746" style="color:white;">07 00 80 77 46 (WhatsApp)</a></p>
-      <p>📸 Instagram : <a href="https://instagram.com/amazingnight" target="_blank" rel="noopener noreferrer" style="color:#d91438;">@amazingnight</a></p>
-    </div>
-  </section>
-
-  <script>
-    const countdown = document.getElementById('countdown');
-    const eventDate = new Date("July 25, 2025 18:00:00").getTime();
-
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const diff = eventDate - now;
-
-      if (diff < 0) {
-        countdown.textContent = "L'événement est en cours !";
-        clearInterval(interval);
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      countdown.textContent = `${days}j ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-  </script>
-</body>
-</html>
+      <img src="https://i.imgur.com/GKD7CyA.jpeg" alt="Amb
+```
