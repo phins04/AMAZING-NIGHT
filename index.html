@@ -2,182 +2,181 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amazing Night – Africa Red Carpet</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazing Night - Dîner Gala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-    body {
-      background-color: #fdfdfd;
-      color: #222;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; }
     header {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/fxKx2HB.jpg') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1580078351604-840b5aa13b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      height: 100vh;
       color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 150px 20px 100px;
-    }
-    header h1 {
-      font-size: 3.5em;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
-    }
-    header .slogan {
-      font-size: 1.8em;
-      font-style: italic;
-      margin-top: 10px;
-      color: #ffdddd;
-    }
-    header .date {
-      font-size: 1.3em;
-      margin-top: 10px;
-      font-weight: 600;
-    }
-    .countdown {
-      font-size: 2em;
-      color: #d91438;
-      margin-top: 20px;
-      font-weight: 700;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 60px auto;
       padding: 0 20px;
     }
+    header h1 { font-size: 4rem; font-family: 'Playfair Display', serif; }
+    header p { font-size: 1.3rem; margin-top: 10px; }
+    nav {
+      background-color: #111;
+      padding: 10px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: gold; }
     section {
-      margin-bottom: 60px;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
     }
     .section-title {
+      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      color: #2c3e50;
       text-align: center;
-      font-size: 2.8em;
-      margin-bottom: 25px;
-      color: #d91438;
-      position: relative;
+      margin-bottom: 40px;
     }
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: #d91438;
-      margin: 12px auto 0;
-      border-radius: 2px;
+    .content-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
-      text-align: center;
-    }
-    ul li {
-      font-size: 1.2em;
-      margin: 15px 0;
-    }
-    .button {
-      display: block;
-      width: fit-content;
-      margin: 30px auto;
-      background-color: #d91438;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 1.2em;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    .button:hover {
-      background-color: #a40f28;
-    }
-    .contact {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    .contact a {
-      color: #d91438;
-      text-decoration: none;
-      font-weight: 700;
-    }
-    .footer {
-      text-align: center;
+    .content-box img { width: 100%; border-radius: 10px; }
+    .menu-item, .guest, .program-item {
+      background: white;
       padding: 20px;
-      background-color: #111;
-      color: #aaa;
-      font-size: 0.9em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .cta {
+      background: gold;
+      color: #111;
+      padding: 15px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
     }
     @media(max-width: 768px) {
-      header h1 {
-        font-size: 2.2em;
-      }
-      .section-title {
-        font-size: 2em;
-      }
+      .content-box { grid-template-columns: 1fr; }
+      header h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Amazing Night</h1>
-    <p class="slogan">Africa Red Carpet</p>
-    <p class="date">Vendredi 25 juillet 2025 – 18h00 à 00h00 | KS Royal</p>
-    <div class="countdown" id="countdown"></div>
+    <h1>Amazing Night 2025</h1>
+    <p>Un Dîner Gala d'exception - 26 juillet au KS Royal</p>
+    <a href="#reservation" class="cta">Réserver maintenant</a>
   </header>
 
-  <section class="container">
-    <h2 class="section-title">🏆 Présentation</h2>
-    <p style="text-align:center; max-width: 800px; margin: 0 auto; font-size: 1.2em;">Le Gala <strong>« Amazing Night »</strong> est l'événement chic de l’année à ne pas manquer. Une soirée mémorable dans l’élégance, la culture africaine, et une ambiance raffinée à couper le souffle.</p>
+  <nav>
+    <a href="#apropos">À propos</a>
+    <a href="#programme">Programme</a>
+    <a href="#menu">Menu</a>
+    <a href="#artistes">Artistes</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="apropos">
+    <h2 class="section-title">À propos de l'événement</h2>
+    <div class="content-box">
+      <div>
+        <p>
+          Le Dîner Gala <strong>Amazing Night</strong> célèbre la fin d'année universitaire dans une ambiance chic et festive. Plus de 200 invités, dont des personnalités, étudiants, entreprises partenaires et artistes se réuniront pour une soirée de prestige.
+        </p>
+        <p>
+          Au programme : dîner gastronomique, animation, spectacle, remise de prix, tombola et ambiance musicale assurée par un orchestre live.
+        </p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1050&q=80" alt="Gala" />
+    </div>
   </section>
 
-  <section class="container">
-    <h2 class="section-title">🎉 Programme</h2>
-    <ul>
-      <li>Défilé de mode</li>
-      <li>Prestation artistique & humoristique</li>
-      <li>Concours & tombola</li>
-      <li>Élection du Roi & de la Reine de la soirée</li>
-    </ul>
+  <section id="programme">
+    <h2 class="section-title">Programme</h2>
+    <div class="program-item">
+      <h3>18h00 - Accueil & Cocktail</h3>
+      <p>Réception des invités avec rafraîchissements, prise de photo sur le tapis rouge.</p>
+    </div>
+    <div class="program-item">
+      <h3>20h00 - Dîner et Remise de Prix</h3>
+      <p>Repas gastronomique, discours officiels, distinction des meilleurs étudiants & partenaires.</p>
+    </div>
+    <div class="program-item">
+      <h3>22h00 - Spectacle & Tombola</h3>
+      <p>Performances artistiques, humour, musique live et tirage de la tombola avec un iPhone à gagner !</p>
+    </div>
   </section>
 
-  <section class="container">
-    <h2 class="section-title">🎟️ Billetterie</h2>
-    <p style="text-align:center; font-size: 1.2em;">Prix du ticket : <strong>20 000 FCFA</strong></p>
-    <p style="text-align:center; font-size: 1.2em;">Réservez facilement par téléphone via Orange Money ou Wave au : <a href="tel:+2250700807746">07 00 80 77 46</a></p>
-    <a href="#" class="button">Acheter mon ticket</a>
+  <section id="menu">
+    <h2 class="section-title">Menu</h2>
+    <div class="menu-item">
+      <h3>Entrées</h3>
+      <p>Salade exotique / Cocktail de crevettes</p>
+    </div>
+    <div class="menu-item">
+      <h3>Plats</h3>
+      <p>Attiéké & Méchoui de mouton / Tchep & Thon</p>
+    </div>
+    <div class="menu-item">
+      <h3>Desserts</h3>
+      <p>Fondant au chocolat / Fruits frais</p>
+    </div>
+    <div class="menu-item">
+      <h3>Boissons</h3>
+      <p>Sodas, jus naturels, eau Céleste</p>
+    </div>
   </section>
 
-  <section class="contact">
-    <h2 class="section-title" style="color: white;">📞 Contact</h2>
-    <p style="font-size: 1.2em;">Besoin d'informations ? Écrivez-nous à <a href="mailto:amazingnight@event.ci">amazingnight@event.ci</a> ou appelez le <a href="tel:+2250700807746">07 00 80 77 46</a></p>
+  <section id="artistes">
+    <h2 class="section-title">Artistes & Invités</h2>
+    <div class="guest">
+      <h3>Bonbobary Kefrein</h3>
+      <p>Maître de cérémonie</p>
+    </div>
+    <div class="guest">
+      <h3>Ange Boris</h3>
+      <p>Humoriste invité</p>
+    </div>
+    <div class="guest">
+      <h3>Orchestre Live</h3>
+      <p>Ambiance musicale assurée tout au long de la soirée</p>
+    </div>
   </section>
 
-  <footer class="footer">
-    &copy; 2025 Amazing Night – Tous droits réservés
+  <section id="contact">
+    <h2 class="section-title">Réservations & Contact</h2>
+    <p style="text-align: center;">Pour réserver votre place ou en savoir plus :</p>
+    <p style="text-align: center; font-weight: bold;">Contact : +225 07 00 00 00 / aibs.event@gmail.com</p>
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="https://wa.me/2250700000000" class="cta">Réserver via WhatsApp</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Amazing Night - Tous droits réservés</p>
   </footer>
-
-  <script>
-    const countdownEl = document.getElementById('countdown');
-    const eventDate = new Date('2025-07-25T18:00:00');
-    function updateCountdown() {
-      const now = new Date();
-      const diff = eventDate - now;
-      if (diff <= 0) {
-        countdownEl.textContent = "C'est maintenant !";
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      countdownEl.textContent = `${days}j ${hours}h ${minutes}m ${seconds}s`;
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
 </body>
 </html>
