@@ -7,257 +7,113 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Reset & base */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
       font-family: 'Montserrat', sans-serif;
     }
     body {
-      background-color: #f4f4f4;
+      background-color: #fdfdfd;
       color: #222;
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
       overflow-x: hidden;
     }
-    header, section {
-      padding: 40px 20px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
-    }
     header {
-      background: url('https://i.imgur.com/fxKx2HB.jpg') no-repeat center center/cover;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/fxKx2HB.jpg') center/cover no-repeat;
       color: white;
       text-align: center;
-      padding: 120px 20px 80px;
-      position: relative;
-      animation-delay: 0.2s;
-    }
-    header::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 0;
-    }
-    header > * {
-      position: relative;
-      z-index: 1;
+      padding: 150px 20px 100px;
     }
     header h1 {
-      font-size: 3em;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-      letter-spacing: 0.05em;
+      font-size: 3.5em;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
     }
-    header p.slogan {
-      font-size: 1.4em;
-      margin-bottom: 30px;
+    header .slogan {
+      font-size: 1.8em;
       font-style: italic;
-      color: #ffdbdb;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+      margin-top: 10px;
+      color: #ffdddd;
     }
-    header p.date {
-      font-size: 1.2em;
-      margin-bottom: 5px;
+    header .date {
+      font-size: 1.3em;
+      margin-top: 10px;
       font-weight: 600;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+    }
+    .countdown {
+      font-size: 2em;
+      color: #d91438;
+      margin-top: 20px;
+      font-weight: 700;
     }
     .container {
       max-width: 1100px;
-      margin: auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      padding: 30px 40px;
-      margin-bottom: 50px;
-      animation-delay: 0.4s;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    section {
+      margin-bottom: 60px;
     }
     .section-title {
-      font-size: 2.5em;
-      margin-bottom: 25px;
       text-align: center;
+      font-size: 2.8em;
+      margin-bottom: 25px;
       color: #d91438;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #d91438;
+      margin: 12px auto 0;
+      border-radius: 2px;
     }
     ul {
-      list-style: inside disc;
-      font-size: 1.1em;
-      color: #444;
-      margin-left: 0;
+      list-style: none;
+      padding-left: 0;
+      text-align: center;
     }
     ul li {
-      margin-bottom: 12px;
+      font-size: 1.2em;
+      margin: 15px 0;
     }
     .button {
+      display: block;
+      width: fit-content;
+      margin: 30px auto;
       background-color: #d91438;
       color: white;
       padding: 15px 30px;
-      text-decoration: none;
-      display: inline-block;
       border-radius: 6px;
-      margin-top: 25px;
-      font-weight: 700;
-      font-size: 1.1em;
-      transition: background-color 0.3s ease;
-      text-align: center;
-      cursor: pointer;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
-    .button:hover, .button:focus {
+    .button:hover {
       background-color: #a40f28;
-      outline: none;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 20px;
-      animation-delay: 0.6s;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .gallery img:hover, .gallery img:focus {
-      transform: scale(1.05);
-      outline: none;
     }
     .contact {
-      background-color: #222;
+      background: #222;
       color: white;
-      padding: 40px 20px;
-      border-radius: 12px 12px 0 0;
       text-align: center;
-      animation-delay: 0.8s;
+      padding: 40px 20px;
     }
     .contact a {
       color: #d91438;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
     }
-    .countdown {
-      font-size: 2.5em;
+    .footer {
       text-align: center;
-      margin-top: 25px;
-      color: #d91438;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      animation-delay: 1s;
+      padding: 20px;
+      background-color: #111;
+      color: #aaa;
+      font-size: 0.9em;
     }
-
-    /* Modal Styles */
-    .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 9999;
-    }
-    .modal.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .modal-content {
-      background: white;
-      border-radius: 10px;
-      padding: 30px 40px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      animation: slideDown 0.4s ease forwards;
-    }
-    .modal-content h3 {
-      margin-bottom: 20px;
-      color: #d91438;
-      font-weight: 700;
-      font-size: 1.8em;
-    }
-    .modal-content p {
-      font-size: 1.1em;
-      margin-bottom: 30px;
-      color: #333;
-    }
-    .modal-content .payment-option {
-      background: #d91438;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: 700;
-      cursor: pointer;
-      margin: 10px 0;
-      transition: background-color 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      font-size: 1.1em;
-    }
-    .modal-content .payment-option:hover, .modal-content .payment-option:focus {
-      background-color: #a40f28;
-      outline: none;
-    }
-    .modal-close {
-      position: absolute;
-      top: 10px; right: 15px;
-      background: transparent;
-      border: none;
-      font-size: 1.5em;
-      color: #999;
-      cursor: pointer;
-      transition: color 0.2s ease;
-    }
-    .modal-close:hover, .modal-close:focus {
-      color: #d91438;
-      outline: none;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
+    @media(max-width: 768px) {
       header h1 {
-        font-size: 2em;
-      }
-      header p.slogan {
-        font-size: 1.1em;
-      }
-      header p.date {
-        font-size: 1em;
-      }
-      .container {
-        padding: 20px 25px;
+        font-size: 2.2em;
       }
       .section-title {
         font-size: 2em;
@@ -270,50 +126,58 @@
     <h1>Amazing Night</h1>
     <p class="slogan">Africa Red Carpet</p>
     <p class="date">Vendredi 25 juillet 2025 – 18h00 à 00h00 | KS Royal</p>
-    <div class="countdown" id="countdown" aria-live="polite" aria-atomic="true"></div>
+    <div class="countdown" id="countdown"></div>
   </header>
 
-  <section>
-    <div class="container" role="region" aria-labelledby="presentation-title">
-      <h2 class="section-title" id="presentation-title">🏆 Présentation</h2>
-      <p>Le Gala « Amazing Night » est l'événement chic de l’année à ne pas manquer. Préparez-vous pour une soirée mémorable dans l’élégance et la culture africaine, dans la beauté et la grandeur.</p>
-    </div>
+  <section class="container">
+    <h2 class="section-title">🏆 Présentation</h2>
+    <p style="text-align:center; max-width: 800px; margin: 0 auto; font-size: 1.2em;">Le Gala <strong>« Amazing Night »</strong> est l'événement chic de l’année à ne pas manquer. Une soirée mémorable dans l’élégance, la culture africaine, et une ambiance raffinée à couper le souffle.</p>
   </section>
 
-  <section>
-    <div class="container" role="region" aria-labelledby="programme-title">
-      <h2 class="section-title" id="programme-title">🎉 Programme</h2>
-      <ul>
-        <li>Défilé de mode</li>
-        <li>Prestation artistique & humoristique</li>
-        <li>Concours & tombola</li>
-        <li>Élection du Roi & de la Reine de la soirée</li>
-      </ul>
-    </div>
+  <section class="container">
+    <h2 class="section-title">🎉 Programme</h2>
+    <ul>
+      <li>Défilé de mode</li>
+      <li>Prestation artistique & humoristique</li>
+      <li>Concours & tombola</li>
+      <li>Élection du Roi & de la Reine de la soirée</li>
+    </ul>
   </section>
 
-  <section>
-    <div class="container" role="region" aria-labelledby="billetterie-title">
-      <h2 class="section-title" id="billetterie-title">🎟️ Billetterie</h2>
-      <p>Prix du ticket : <strong>20 000 FCFA</strong></p>
-      <p>Réservez facilement par téléphone via Orange Money ou Wave au : <a href="tel:+2250700807746" style="color:#d91438; font-weight: 700;">07 00 80 77 46</a></p>
-      <button class="button" id="buyTicketBtn" aria-label="Acheter mon ticket pour Amazing Night">Acheter mon ticket</button>
-    </div>
+  <section class="container">
+    <h2 class="section-title">🎟️ Billetterie</h2>
+    <p style="text-align:center; font-size: 1.2em;">Prix du ticket : <strong>20 000 FCFA</strong></p>
+    <p style="text-align:center; font-size: 1.2em;">Réservez facilement par téléphone via Orange Money ou Wave au : <a href="tel:+2250700807746">07 00 80 77 46</a></p>
+    <a href="#" class="button">Acheter mon ticket</a>
   </section>
 
-  <section>
-    <div class="container" role="region" aria-labelledby="team-title">
-      <h2 class="section-title" id="team-title">🧑‍🤝‍🧑 Notre équipe</h2>
-      <p>Organisé par le Bureau des Étudiants de AIBS.</p>
-      <div style="display:flex; justify-content:center; gap: 40px; margin-top: 20px; flex-wrap: wrap;">
-        <img src="download (3).png" alt="Logo Bureau AIBS" width="150" loading="lazy" />
-        <img src="download (5).png" alt="Logo AIBS" width="150" loading="lazy" />
-      </div>
-    </div>
+  <section class="contact">
+    <h2 class="section-title" style="color: white;">📞 Contact</h2>
+    <p style="font-size: 1.2em;">Besoin d'informations ? Écrivez-nous à <a href="mailto:amazingnight@event.ci">amazingnight@event.ci</a> ou appelez le <a href="tel:+2250700807746">07 00 80 77 46</a></p>
   </section>
 
-  <section class="gallery" role="region" aria-labelledby="gallery-title">
-    <div class="container">
-      <h2 class="section-title" id="gallery-title">📸 Galerie</h2>
-      <img src="https://i.imgur.com/V2vZkXI.jpeg" alt="Teaser Amazing Night" loading="lazy" />
-      <img src="https://i.imgur.com/GKD7CyA.jpeg" alt="Amb
+  <footer class="footer">
+    &copy; 2025 Amazing Night – Tous droits réservés
+  </footer>
+
+  <script>
+    const countdownEl = document.getElementById('countdown');
+    const eventDate = new Date('2025-07-25T18:00:00');
+    function updateCountdown() {
+      const now = new Date();
+      const diff = eventDate - now;
+      if (diff <= 0) {
+        countdownEl.textContent = "C'est maintenant !";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdownEl.textContent = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
